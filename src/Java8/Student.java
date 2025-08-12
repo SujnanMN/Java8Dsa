@@ -9,10 +9,14 @@ public class Student {
 
     private double marks;
 
+    public Student() {
+        this(1,"",0);
+    }
+
     public Student(int id, String name, double marks) {
-        this.id = id;
-        this.name = name;
-        this.marks = marks;
+        id = id;
+        name = name;
+        marks = marks;
     }
 
     public String getName() {
