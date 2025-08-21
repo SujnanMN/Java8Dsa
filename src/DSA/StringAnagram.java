@@ -1,5 +1,7 @@
 package DSA;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.*;
 import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -21,20 +23,18 @@ public class StringAnagram {
                 arr[tc]-=1;
         }
 
-        System.out.println(true); var a = 23;
-        //var freqS = aa;
+        System.out.println(true);
 
-        var freqS = s.chars()
-                .boxed()
-                .collect(Collectors.groupingBy(
-                        Function.identity(),
-                        Collectors.counting()
-                ));
-        System.out.println(freqS);
+        anagramJava8();
+    }
 
-        List<String> list = Arrays.asList("abc","abcd","abc");
-        System.out.println((list.stream().collect(Collectors.groupingBy(x->x,Collectors.counting()))));
+    private static void anagramJava8() {
+        String s = "anagram", t = "nagaram";
 
-
+        var sMap = s.chars().mapToObj(c->(char)c).collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+        var tMap = s.chars().mapToObj(c->(char)c).collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+        if (sMap.equals(tMap))
+             System.out.println(true);
+    else System.out.println(false);
     }
 }
