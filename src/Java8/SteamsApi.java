@@ -1,6 +1,8 @@
 package Java8;
 
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class SteamsApi {
@@ -33,12 +35,18 @@ public class SteamsApi {
         list2.stream().skip(1).findFirst().ifPresent(System.out::println);
 
         Map<Integer, Integer> map = new HashMap<>();
+        Set<Map.Entry<Integer,Integer>> entry = map.entrySet();
+        entry.stream().map(a->a.getKey());
         map.forEach((k,v)->{
                     System.out.println(k);
                     System.out.println(v);
                 });
 
 //      predictae bipred
+        Iterator itr = map.entrySet().iterator();
+        while(itr.hasNext()){};
+
+        list2.stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
 
     }
 }
