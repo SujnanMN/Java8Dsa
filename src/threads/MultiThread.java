@@ -1,9 +1,9 @@
 package threads;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.IntStream;
 
 public class MultiThread {
 
@@ -32,5 +32,6 @@ public class MultiThread {
         t1.join();
         t2.join();
         System.out.println(count);
+
     }
 }
