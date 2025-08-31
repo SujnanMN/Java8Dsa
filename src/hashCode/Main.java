@@ -75,6 +75,7 @@ class Main {
         System.out.println(map2.hashCode());
         System.out.println(map.equals(map2));
         //list
+        //hash calculation for storing
         System.out.println(1000^(1000>>>16));
         //0001
         //0010
@@ -113,8 +114,8 @@ class Test {
         if (obj ==null  || getClass() != obj.getClass())
             return false;
 
-        Test us = (Test) obj;
-        return  id == us.id && name ==us.name;
+        Test test = (Test) obj;
+        return  id == test.id && Objects.equals(test.name, this.name);
 
     }
 

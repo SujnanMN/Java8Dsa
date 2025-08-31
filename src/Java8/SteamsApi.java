@@ -1,13 +1,16 @@
 package Java8;
 
+import java.rmi.Remote;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class SteamsApi {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CloneNotSupportedException {
         Stream<String> str1 = Stream.of("ab","bc","de");
 
         Collection<String> col = Arrays.asList("as","bc");
@@ -47,6 +50,43 @@ public class SteamsApi {
         while(itr.hasNext()){};
 
         list2.stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+        /*
+
+// Convert elements to strings and concatenate them, separated by commas
+        String joined = things.stream()
+                .map(Object::toString)
+                .collect(Collectors.joining(", "));
+
+// Compute sum of salaries of employee
+        int total = employees.stream()
+                .collect(Collectors.summingInt(Employee::getSalary));
+
+// Group employees by department
+        Map<Department, List<Employee>> byDept = employees.stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment));
+
+// Compute sum of salaries by department
+        Map<Department, Integer> totalByDept = employees.stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment,
+                        Collectors.summingInt(Employee::getSalary)));
+
+// Partition students into passing and failing
+        Map<Boolean, List<Student>> passingFailing = students.stream()
+                .collect(Collectors.partitioningBy(s -> s.getGrade() >= PASS_THRESHOLD));
+        Since:
+        1.8*/
+
+        List<Integer> intt =list.stream().map(Student::getId).collect(Collectors.toList());
+
+        list.stream().collect(Collectors.toMap(e->e.getId(), e->e, (e1,e2)->e2));
+        list.stream().map(Student::getName).collect(Collectors.toCollection(HashSet::new));
+        list.stream().map(Student::getMarks).reduce(0.0, (a, b)->a+b);
+        list.stream().map(Student::getMarks).mapToDouble(Double::doubleValue).sum();
+        //DoubleStream.of(list.stream().map(Student::getMarks).mapToDouble(Double::doubleValue)).sum();
+        list.stream().collect(Collectors.summingDouble(Student::getMarks));
+        Student stt = new Student();
+        Student stt2 = (Student) stt.clone();
+
 
     }
 }
