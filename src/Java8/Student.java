@@ -1,7 +1,7 @@
 package Java8;
 
 
-public class Student {
+public class Student implements Cloneable{
 
     private String name;
 
@@ -42,6 +42,11 @@ public class Student {
                 ", id=" + id +
                 ", marks=" + marks +
                 '}';
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 
     public double getMarks() {
