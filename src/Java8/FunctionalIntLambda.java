@@ -1,9 +1,7 @@
 package Java8;
 
 import java.util.*;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.function.*;
 
 public class FunctionalIntLambda {
     public static void main(String[] args) {
@@ -33,7 +31,48 @@ public class FunctionalIntLambda {
         Function<List<String>, HashSet<String>> fun3 = HashSet::new;
         System.out.println(String.join(", ", fun3.apply(list)));
 
-        //Using threads TODO
+        //Optional.ofNullable(list).ifPresent(System.out::println);
+
+        Predicate<Double> p = n->n%2==0;
+        p.test(40.0);
+
+        Consumer<Integer> c = e->System.out.println(e);
+        Consumer<Integer> c2 = System.out::print;
+        c.accept(22);
+
+        Supplier<Double> s = ()->Math.random();
+        Supplier<Double> s2 = Math::random;
+        s.get();
+
+        Function<String, Character> f = e->e.charAt(0);
+        Function<String, Integer> f2 = String::length;
+        f.apply("abc");
+
+        BiFunction<String, String, Integer> bf = (a, b)->a.length()+b.length();
+        bf.apply("ab","cde");
+
+        BiConsumer<String, String> bc = (a,b)->System.out.println(a+b);
+        bc.accept("abc","def");
+
+        //BiPredicate
+        BiPredicate<Integer, Integer> bp =  (a,b)->a+b>0;
+        bp.test(2,10);
+
+        UnaryOperator<String> uo = String::toUpperCase;
+        uo.apply("abc");
+
+        BinaryOperator<String> bo = (a,b)->a.concat(b);
+        bo.apply("abc","def");
+
+
+        //Return type specified in class itself
+        //DoubleSupplier
+        DoubleSupplier ds = Math::random;
+        ds.getAsDouble();
+        //BooleanSupplier
+        //DoublePredicate
+        //DoubleFunction
+        //IntFunction
 
     }
 }
