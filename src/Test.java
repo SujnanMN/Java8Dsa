@@ -1,11 +1,13 @@
+import java.io.Serializable;
 import java.lang.reflect.Array;
+import java.rmi.Remote;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Test {
-    public static void main(String[] args) {
+public class Test implements Cloneable, EventListener, Remote, RandomAccess, Serializable {
+    public static void main(String[] args) throws CloneNotSupportedException {
 
         String str = "This a computer with a software";
         System.out.println(str.split("\\s+").toString());
@@ -34,5 +36,13 @@ public class Test {
         //short long
         //shortest distansce
 
+        Test test = new Test();
+        Test t2= (Test)test.clone(); //Shallow clone
+        test.testNonStatic();
+
+    }
+
+    public void testNonStatic () {
+        return;
     }
 }

@@ -1,26 +1,6 @@
-package qStack;
+package DSA.qStack;
 
-import java.util.Stack;
-
-public class StackImpl {
-
-    public static void main(String[] args) {
-        Stacks st = new Stacks(5);
-        st.pop();
-        st.push(1);
-        st.push(1);
-        st.push(1);
-        st.push(1);
-        st.push(1);
-        st.push(1);
-        st.peek();
-
-        Stack st2 = new Stack();
-        st2.push(1);
-    }
-}
-
-class Stacks {
+public class Stacks {
     private int top;
     private int max;
     private int[] arr;
